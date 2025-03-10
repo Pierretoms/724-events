@@ -37,6 +37,7 @@ export const DataProvider = ({ children }) => {
       value={{
         data,
         error,
+        last: data?.events?.[data.events.length - 1], // Prend le dernier événement
       }}
     >
       {children}
