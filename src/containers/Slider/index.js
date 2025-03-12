@@ -8,15 +8,16 @@ const Slider = () => {
   const { data } = useData();
   const [index, setIndex] = useState(0);
 
-  const byDateDesc = data?.focus
-  ?.sort((evtA, evtB) => (new Date(evtA.date) < new Date(evtB.date) ? -1 : 1)) || [];
-
+  const byDateDesc =
+    data?.focus?.sort((evtA, evtB) =>
+      new Date(evtA.date) < new Date(evtB.date) ? -1 : 1
+    ) || [];
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setIndex((prevIndex) => (prevIndex + 1) % byDateDesc.length);
     }, 5000);
-    
+
     return () => clearTimeout(timer);
   }, [index, byDateDesc.length]);
 
@@ -27,7 +28,9 @@ const Slider = () => {
         return (
           <div
             key={key}
-            className={`SlideCard SlideCard--${byDateDesc[index] === event ? "display" : "hide"}`}
+            className={`SlideCard SlideCard--${
+              byDateDesc[index] === event ? "display" : "hide"
+            }`}
           >
             <img src={event.cover} alt="forum" />
             <div className="SlideCard__descriptionContainer">
