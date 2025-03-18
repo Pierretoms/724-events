@@ -11,7 +11,7 @@ const Slider = () => {
   const byDateDesc =
     data?.focus?.sort((evtA, evtB) =>
       new Date(evtA.date) < new Date(evtB.date) ? -1 : 1
-    ) || [];
+    ) || []; // ordre croissant malgré "desc"
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -30,7 +30,7 @@ const Slider = () => {
             key={key}
             className={`SlideCard SlideCard--${
               byDateDesc[index] === event ? "display" : "hide"
-            }`}
+            }`} // compare directement l'objet event avec bydatedesc 
           >
             <img src={event.cover} alt="forum" />
             <div className="SlideCard__descriptionContainer">
